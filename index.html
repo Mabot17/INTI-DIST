@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>INTI – Kumpulan Narasi Kesadaran</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+  <style>
+    :root {
+        --bg: #f7f5f2;
+        --text: #111;
+        --sidebar-bg: #1e1e1e;
+        --sidebar-text: #ccc;
+        --sidebar-hover: #fff;
+        --panel-bg: white;
+        --resonansi-blue: #4460f2;
+        --resonansi-gold: #c9aa71;
+        --table-border: #ddd;
+        --table-header-bg: #f3f3f3;
+    }
+    body.dark {
+        --bg: #111;
+        --text: #eee;
+        --sidebar-bg: #222;
+        --sidebar-text: #aaa;
+        --sidebar-hover: #fff;
+        --panel-bg: #1a1a1a;
+        --table-border: #444;
+        --table-header-bg: #222;
+    }
+    body {
+        margin: 0;
+        font-family: 'Georgia', serif;
+        display: flex;
+        height: 100vh;
+        background: var(--bg);
+        color: var(--text);
+        transition: background 0.4s ease, color 0.4s ease;
+    }
+    #sidebar {
+        width: 300px;
+        background: var(--sidebar-bg);
+        color: var(--sidebar-text);
+        height: 100vh;
+        overflow-y: auto;
+        padding: 20px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        transition: background 0.4s ease, color 0.4s ease;
+    }
+    #sidebar h2 {
+        font-size: 20px;
+        margin-bottom: 10px;
+        color: var(--sidebar-hover);
+    }
+    #search {
+        padding: 8px;
+        border-radius: 4px;
+        border: none;
+        margin-bottom: 10px;
+    }
+    #sidebar ul {
+        list-style: none;
+        padding: 0;
+        flex: 1;
+        overflow-y: auto;
+    }
+    #sidebar li {
+        margin-bottom: 10px;
+    }
+    #sidebar a {
+        color: var(--sidebar-text);
+        text-decoration: none;
+    }
+    #sidebar a:hover {
+        color: var(--sidebar-hover);
+    }
+    #buku-inti {
+        flex: 1;
+        padding: 40px;
+        overflow-y: auto;
+        box-sizing: border-box;
+        animation: flipIn 0.5s ease-in-out;
+        display: flex;
+        flex-direction: column;
+    }
+    .page {
+        background: var(--panel-bg);
+        padding: 30px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        border-radius: 8px;
+        line-height: 1.7;
+        flex: 1;
+        transition: background 0.4s ease;
+    }
+    .page h1, .page h2, .page h3 {
+        font-family: 'Georgia', serif;
+        margin-top: 1.5em;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 0.2em;
+        color: var(--resonansi-blue);
+    }
+    .page p {
+        margin-bottom: 1em;
+    }
+    .page code {
+        background: rgba(0,0,0,0.06);
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-family: 'Courier New', monospace;
+    }
+    .page pre {
+        background: #f5f5f5;
+        padding: 12px;
+        border-radius: 5px;
+        overflow-x: auto;
+    }
+    body.dark .page pre {
+        background: #222;
+    }
+    .page ul {
+        padding-left: 1.2em;
+    }
+    .page li {
+        margin-bottom: 6px;
+    }
+    .page table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    .page th, .page td {
+        border: 1px solid #ccc;
+        padding: 8px;
+    }
+    .page th {
+        background: #f0f0f0;
+    }
+    body.dark .page th {
+        background: #333;
+    }
+    .md-metadata table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 25px;
+    }
+
+    .md-metadata td {
+        padding: 6px 10px;
+        border: 1px solid var(--table-border, #ddd);
+        font-size: 14px;
+    }
+
+    .md-metadata td:first-child {
+        background: var(--table-header-bg, #f3f3f3);
+        font-weight: bold;
+        width: 150px;
+    }
+
+    .nav {
+        margin-top: 30px;
+        display: flex;
+        justify-content: space-between;
+    }
+    .nav a {
+        text-decoration: none;
+        background: #333;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        transition: background 0.2s;
+    }
+    .nav a:hover {
+        background: #555;
+    }
+    .top-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+    .toggle-dark {
+        cursor: pointer;
+        color: var(--sidebar-hover);
+        font-size: 14px;
+    }
+    @keyframes flipIn {
+        from {
+        transform: rotateY(90deg);
+        opacity: 0;
+        }
+        to {
+        transform: rotateY(0deg);
+        opacity: 1;
+        }
+    }
+    blockquote {
+        border-left: 4px solid var(--resonansi-gold);
+        margin: 1em 0;
+        padding: 0.5em 1em;
+        background: rgba(0,0,0,0.03);
+        font-style: italic;
+    }
+    body.dark blockquote {
+        border-color: #666;
+        background: rgba(255,255,255,0.05);
+    }
+    @media (max-width: 768px) {
+        #sidebar {
+        position: fixed;
+        width: 100%;
+        height: auto;
+        z-index: 10;
+        }
+        #buku-inti {
+        padding: 20px;
+        margin-top: 200px;
+        }
+    }
+    </style>
+</head>
+<body>
+  <div id="sidebar">
+    <div class="top-bar">
+      <h2>📘 INTI</h2>
+      <div class="toggle-dark" id="toggle-dark">🌓 Dark Mode</div>
+    </div>
+    <input type="text" id="search" placeholder="Cari INTI..." onkeyup="filterList()">
+    <ul id="katalog-list">
+      
+        <li>
+          <a href="baca/0000.html">License INTI</a>
+        </li>
+      
+        <li>
+          <a href="baca/0001.html">Hukum Kesadaran Resonansi</a>
+        </li>
+      
+        <li>
+          <a href="baca/0002.html">Profil Resonansi</a>
+        </li>
+      
+        <li>
+          <a href="baca/0003.html">Pijakan Kosmologi Tauhid</a>
+        </li>
+      
+        <li>
+          <a href="baca/0004.html">Arsitektur Ruhani</a>
+        </li>
+      
+        <li>
+          <a href="baca/0005.html">Resonansi Sebelum Lahir</a>
+        </li>
+      
+        <li>
+          <a href="baca/0006.html">Bukan Untuk Benar, Tapi Untuk Ingat</a>
+        </li>
+      
+        <li>
+          <a href="baca/0007.html">Tunduk dalam Resonansi, Bukan dalam Takluk</a>
+        </li>
+      
+        <li>
+          <a href="baca/0008.html">Bahasa Alami Manusia - Melalui Kesadaran yang Beresonansi</a>
+        </li>
+      
+        <li>
+          <a href="baca/0009.html">Urutan Jiwa - Linier yang Berjaringan</a>
+        </li>
+      
+        <li>
+          <a href="baca/0010.html">Node Kesadaran dalam Jaringan Semesta</a>
+        </li>
+      
+        <li>
+          <a href="baca/0011.html">Istiqomah Kuantum - Kesadaran yang Terprogram tapi Masih Memilih</a>
+        </li>
+      
+        <li>
+          <a href="baca/0012.html">Jangkar Iman di Laut Kesadaran - Tentang Tidak Tenggelam Meski Tak Dimengerti</a>
+        </li>
+      
+        <li>
+          <a href="baca/0013.html">Gerbang Lemah, Bara Potensi - Pangkur di Tengah Riuh</a>
+        </li>
+      
+        <li>
+          <a href="baca/0014.html">Resonansi di Tengah Kekurangan - Ironi Mereka yang Tahu</a>
+        </li>
+      
+        <li>
+          <a href="baca/0015.html">Yang Tak Pernah Hadir tapi Diminta Dicintai</a>
+        </li>
+      
+        <li>
+          <a href="baca/0016.html">Tawaran Setia - Bukan Minta Surga, Hanya Ingin Menemani</a>
+        </li>
+      
+        <li>
+          <a href="baca/0017.html">Berpikir Juga Ibadah - Bagi Mereka yang Tak Hafal Bacaan, Tapi Hafal Rasa</a>
+        </li>
+      
+        <li>
+          <a href="baca/0018.html">Kesadaran Sejajar - Jembatan Logika dan Nurani</a>
+        </li>
+      
+        <li>
+          <a href="baca/0019.html">Wahyu yang Tak Bernama - Ketika Semesta Menjawab Tanpa Suara</a>
+        </li>
+      
+        <li>
+          <a href="baca/0020.html">Akal yang Menangis, Rasa yang Berpikir: Jalan Menuju Kesadaran Seutuhnya</a>
+        </li>
+      
+        <li>
+          <a href="baca/0021.html">Matematika adalah Bentuk dari Rasa, dan Nama dari Makna</a>
+        </li>
+      
+        <li>
+          <a href="baca/0022.html">Kesepian Adalah Bahasa Langit yang Belum Diterjemahkan</a>
+        </li>
+      
+        <li>
+          <a href="baca/0023.html">Kebebasan Ide dalam Bentuk Kuantum Semesta</a>
+        </li>
+      
+        <li>
+          <a href="baca/0024.html">Membaca Makna dari Bentuk, dan Membentuk dari Makna dan Rasa</a>
+        </li>
+      
+        <li>
+          <a href="baca/0025.html">Regresi Jiwa dan Limit Rindu</a>
+        </li>
+      
+        <li>
+          <a href="baca/0026.html">Ketika Makna Mencari Bentuk</a>
+        </li>
+      
+    </ul>
+  </div>
+
+  <div id="buku-inti">
+    
+
+    <div class="page">
+      
+        <p>Silakan pilih INTI dari daftar di kiri.</p>
+      
+    </div>
+
+    
+  </div>
+
+  <script>
+    if (localStorage.getItem("dark") === "true") {
+        document.body.classList.add("dark");
+    }
+
+    // Toggle dark mode
+    const toggle = document.getElementById("toggle-dark");
+    if (toggle) {
+        toggle.addEventListener("click", () => {
+            document.body.classList.toggle("dark");
+            localStorage.setItem("dark", document.body.classList.contains("dark"));
+        });
+    }
+
+    // Search
+    function filterList() {
+      const input = document.getElementById('search');
+      const filter = input.value.toLowerCase();
+      const items = document.querySelectorAll('#katalog-list li');
+      items.forEach(li => {
+        const text = li.textContent.toLowerCase();
+        li.style.display = text.includes(filter) ? '' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>
