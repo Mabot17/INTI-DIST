@@ -1,0 +1,1785 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Yang Bertanya Dituduh Aneh - Tapi Barangkali Dia Satu-satunya yang Masih Manusia</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+        /* Original INTI Colors */
+        --bg-primary: #fefefe;
+        --bg-secondary: #f8f9fb;
+        --text-primary: #1a1d29;
+        --text-secondary: #4a5568;
+        --text-muted: #718096;
+        --sidebar-bg: #ffffff;
+        --sidebar-border: rgba(226, 232, 240, 0.8);
+        --accent-primary: #6366f1;
+        --accent-secondary: #f59e0b;
+        --accent-tertiary: #10b981;
+        --panel-bg: #ffffff;
+        --panel-border: rgba(226, 232, 240, 0.6);
+        
+        /* Astro Warm Colors */
+        --color-cream: #F9F7F3;
+        --color-dark-brown: #2E2B28;
+        --color-medium-brown: #5A4E42;
+        --color-gold: #B8A768;
+        --color-green: #356859;
+        --color-light-green: #2d5449;
+        
+        /* Combined Variables */
+        --shadow-light: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+        --shadow-medium: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        --shadow-large: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        --border-radius: 12px;
+        --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        --blur-backdrop: blur(20px);
+    }
+
+    [data-theme="dark"] {
+        --bg-primary: #0f1419;
+        --bg-secondary: #1a1f2e;
+        --text-primary: #f7fafc;
+        --text-secondary: #e2e8f0;
+        --text-muted: #a0aec0;
+        --sidebar-bg: rgba(26, 31, 46, 0.95);
+        --sidebar-border: rgba(45, 55, 72, 0.8);
+        --panel-bg: rgba(26, 31, 46, 0.8);
+        --panel-border: rgba(45, 55, 72, 0.6);
+        --shadow-light: 0 1px 3px 0 rgba(0, 0, 0, 0.3), 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+        --shadow-medium: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+        --shadow-large: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+        
+        /* Dark theme for Astro colors */
+        --color-cream: #1a1814;
+        --color-dark-brown: #e8e5e1;
+        --color-medium-brown: #c4b8ac;
+        --color-gold: #d4c985;
+        --color-green: #4a7b6a;
+        --color-light-green: #5a8b7a;
+    }
+
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        background: linear-gradient(135deg, var(--color-cream) 0%, var(--bg-primary) 50%, var(--color-cream) 100%);
+        color: var(--text-primary);
+        line-height: 1.7;
+        transition: var(--transition);
+        overflow-x: hidden;
+        position: relative;
+    }
+
+    /* Background Animation */
+    body::before {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: 
+            radial-gradient(circle at 20% 80%, rgba(184, 167, 104, 0.1) 0%, transparent 50%),
+            radial-gradient(circle at 80% 20%, rgba(53, 104, 89, 0.1) 0%, transparent 50%),
+            radial-gradient(circle at 40% 40%, rgba(99, 102, 241, 0.05) 0%, transparent 50%);
+        z-index: -1;
+        animation: backgroundShift 20s ease-in-out infinite;
+    }
+
+    @keyframes backgroundShift {
+        0%, 100% { opacity: 0.3; transform: scale(1); }
+        50% { opacity: 0.6; transform: scale(1.1); }
+    }
+
+    @keyframes bounce {
+        0%, 20%, 53%, 80%, 100% { transform: translateY(0); }
+        40%, 43% { transform: translateY(-10px); }
+        70% { transform: translateY(-5px); }
+        90% { transform: translateY(-2px); }
+    }
+
+    @keyframes contentSlideIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .app-container {
+        display: flex;
+        min-height: 100vh;
+        position: relative;
+    }
+
+    /* Enhanced Sidebar */
+    .sidebar {
+        width: 320px;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: var(--blur-backdrop);
+        border-right: 1px solid var(--sidebar-border);
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        left: 0;
+        top: 0;
+        height: 100vh;
+        z-index: 100;
+        transition: var(--transition);
+        overflow: hidden;
+        box-shadow: var(--shadow-large);
+    }
+
+    [data-theme="dark"] .sidebar {
+        background: rgba(26, 31, 46, 0.98);
+    }
+
+    .sidebar-header {
+        padding: 2.5rem 2rem;
+        border-bottom: 1px solid var(--sidebar-border);
+        background: linear-gradient(135deg, var(--color-green) 0%, var(--color-gold) 50%, var(--accent-primary) 100%);
+        color: white;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .sidebar-header::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.1'%3E%3Cpath d='m36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+        opacity: 0.1;
+        z-index: -1;
+    }
+
+    .app-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 2.25rem;
+        font-weight: 700;
+        margin-bottom: 0.75rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        animation: fadeInUp 0.8s ease-out;
+    }
+
+    .app-title::before {
+        content: '🧠';
+        font-size: 2.5rem;
+        filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+        animation: bounce 3s ease-in-out infinite;
+    }
+
+    .app-subtitle {
+        font-size: 0.95rem;
+        opacity: 0.9;
+        font-weight: 300;
+        letter-spacing: 0.025em;
+        font-style: italic;
+        animation: fadeInUp 0.8s ease-out 0.2s both;
+    }
+
+    .sidebar-controls {
+        padding: 1.5rem 2rem;
+        display: flex;
+        gap: 1rem;
+        border-bottom: 1px solid var(--sidebar-border);
+        background: rgba(255, 255, 255, 0.5);
+    }
+
+    [data-theme="dark"] .sidebar-controls {
+        background: rgba(0, 0, 0, 0.2);
+    }
+
+    .search-container {
+        flex: 1;
+        position: relative;
+    }
+
+    .search-input {
+        width: 100%;
+        padding: 0.875rem 1rem 0.875rem 2.75rem;
+        border: 2px solid var(--panel-border);
+        border-radius: var(--border-radius);
+        background: var(--bg-secondary);
+        color: var(--text-primary);
+        font-size: 0.9rem;
+        transition: var(--transition);
+        box-shadow: var(--shadow-light);
+    }
+
+    .search-input:focus {
+        outline: none;
+        border-color: var(--color-gold);
+        box-shadow: 0 0 0 4px rgba(184, 167, 104, 0.1), var(--shadow-medium);
+        background: white;
+    }
+
+    .search-icon {
+        position: absolute;
+        left: 0.875rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: var(--text-muted);
+        font-size: 1.1rem;
+        transition: var(--transition);
+    }
+
+    .search-input:focus + .search-icon {
+        color: var(--color-gold);
+    }
+
+    .theme-toggle {
+        background: linear-gradient(135deg, var(--color-medium-brown), var(--color-green));
+        border: none;
+        border-radius: var(--border-radius);
+        padding: 0.875rem;
+        cursor: pointer;
+        color: white;
+        transition: var(--transition);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 3.5rem;
+        height: 3.5rem;
+        box-shadow: var(--shadow-medium);
+        font-size: 1.2rem;
+    }
+
+    .theme-toggle:hover {
+        transform: translateY(-2px) scale(1.05);
+        box-shadow: var(--shadow-large);
+        background: linear-gradient(135deg, var(--color-green), var(--color-gold));
+    }
+
+    .sidebar-content {
+        flex: 1;
+        overflow-y: auto;
+        padding: 1rem;
+    }
+
+    .catalog-list {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+
+    .catalog-item {
+        transition: var(--transition);
+    }
+
+    .catalog-link {
+        display: block;
+        padding: 1.25rem 1.5rem;
+        color: var(--text-secondary);
+        text-decoration: none;
+        border-radius: var(--border-radius);
+        transition: var(--transition);
+        border: 2px solid transparent;
+        position: relative;
+        font-weight: 500;
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(10px);
+        overflow: hidden;
+    }
+
+    [data-theme="dark"] .catalog-link {
+        background: rgba(255, 255, 255, 0.05);
+    }
+
+    .catalog-link::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transition: var(--transition);
+    }
+
+    .catalog-link:hover::before {
+        left: 100%;
+    }
+
+    .catalog-link:hover {
+        background: linear-gradient(135deg, var(--color-green), var(--color-gold));
+        color: white;
+        transform: translateX(8px) translateY(-2px);
+        box-shadow: var(--shadow-large);
+        border-color: var(--color-gold);
+    }
+
+    .catalog-link.active {
+        background: linear-gradient(135deg, var(--accent-primary), var(--color-green));
+        color: white;
+        box-shadow: var(--shadow-medium);
+        transform: translateX(4px);
+    }
+
+    /* Mobile Sidebar Toggle */
+    .sidebar-toggle {
+        display: none;
+        position: fixed;
+        top: 1.5rem;
+        left: 1.5rem;
+        z-index: 1000;
+        background: linear-gradient(135deg, var(--color-green), var(--color-gold));
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 3.5rem;
+        height: 3.5rem;
+        cursor: pointer;
+        box-shadow: var(--shadow-large);
+        transition: var(--transition);
+        font-size: 1.2rem;
+    }
+
+    .sidebar-toggle:hover {
+        transform: scale(1.1) rotate(90deg);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Enhanced Main Content */
+    .main-content {
+        flex: 1;
+        margin-left: 320px;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        transition: var(--transition);
+        position: relative;
+    }
+
+    .content-container {
+        flex: 1;
+        padding: 2.5rem;
+        max-width: 950px;
+        margin: 0 auto;
+        width: 100%;
+        animation: fadeInUp 0.8s ease-out;
+    }
+
+    /* Enhanced Metadata Panel */
+    .metadata-panel {
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: var(--blur-backdrop);
+        border: 1px solid var(--panel-border);
+        border-radius: var(--border-radius);
+        padding: 2rem;
+        margin-bottom: 2rem;
+        box-shadow: var(--shadow-medium);
+        position: relative;
+        overflow: hidden;
+    }
+
+    [data-theme="dark"] .metadata-panel {
+        background: rgba(26, 31, 46, 0.9);
+    }
+
+    .metadata-panel::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, var(--color-green), var(--color-gold), var(--accent-primary));
+        border-radius: var(--border-radius) var(--border-radius) 0 0;
+    }
+
+    .metadata-table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+    }
+
+    .metadata-table td {
+        padding: 1rem 1.25rem;
+        border-bottom: 1px solid var(--panel-border);
+        transition: var(--transition);
+    }
+
+    .metadata-table tr:hover {
+        background: rgba(184, 167, 104, 0.05);
+    }
+
+    .metadata-table td:first-child {
+        background: linear-gradient(135deg, var(--bg-secondary), rgba(184, 167, 104, 0.1));
+        font-weight: 600;
+        color: var(--color-green);
+        width: 160px;
+        border-right: 1px solid var(--panel-border);
+    }
+
+    /* Enhanced Content Panel */
+    .content-panel {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: var(--blur-backdrop);
+        border: 1px solid var(--panel-border);
+        border-radius: var(--border-radius);
+        padding: 3.5rem;
+        box-shadow: var(--shadow-medium);
+        font-family: 'Crimson Pro', Georgia, serif;
+        font-size: 1.125rem;
+        line-height: 1.8;
+        animation: contentSlideIn 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+    }
+
+    [data-theme="dark"] .content-panel {
+        background: rgba(26, 31, 46, 0.95);
+    }
+
+    .content-panel::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 6px;
+        background: linear-gradient(90deg, var(--color-green), var(--color-gold), var(--accent-primary), var(--accent-tertiary));
+        border-radius: var(--border-radius) var(--border-radius) 0 0;
+    }
+
+    .content-panel h1, .content-panel h2, .content-panel h3 {
+        font-family: 'Playfair Display', serif;
+        font-weight: 600;
+        margin: 2.5rem 0 1.5rem 0;
+        position: relative;
+    }
+
+    .content-panel h1 {
+        font-size: 2.75rem;
+        margin-top: 0;
+        background: linear-gradient(135deg, var(--color-green), var(--color-gold), var(--accent-primary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 2rem;
+    }
+
+    .content-panel h2 {
+        font-size: 2.125rem;
+        color: var(--color-green);
+        border-bottom: 3px solid var(--color-gold);
+        padding-bottom: 0.75rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .content-panel h3 {
+        font-size: 1.75rem;
+        color: var(--color-medium-brown);
+    }
+
+    .content-panel p {
+        margin-bottom: 1.75rem;
+        color: var(--text-secondary);
+    }
+
+    /* Welcome Section Enhancement */
+    .welcome-section {
+        animation: contentSlideIn 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+    }
+
+    .welcome-hero {
+        text-align: center;
+        padding: 4rem 2rem;
+        background: linear-gradient(135deg, rgba(249, 247, 243, 0.9), rgba(255, 255, 255, 0.95));
+        border-radius: var(--border-radius);
+        margin-bottom: 3rem;
+        box-shadow: var(--shadow-large);
+        position: relative;
+        overflow: hidden;
+        backdrop-filter: var(--blur-backdrop);
+    }
+
+    [data-theme="dark"] .welcome-hero {
+        background: linear-gradient(135deg, rgba(26, 24, 20, 0.9), rgba(26, 31, 46, 0.95));
+    }
+
+    .welcome-hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: 
+            radial-gradient(circle at 30% 20%, rgba(53, 104, 89, 0.1) 0%, transparent 50%),
+            radial-gradient(circle at 70% 80%, rgba(184, 167, 104, 0.1) 0%, transparent 50%);
+        z-index: -1;
+        animation: backgroundShift 15s ease-in-out infinite;
+    }
+
+    .welcome-icon {
+        font-size: 4rem;
+        margin-bottom: 1.5rem;
+        display: inline-block;
+        animation: bounce 2s ease-in-out infinite;
+        filter: drop-shadow(0 4px 12px rgba(0,0,0,0.2));
+    }
+
+    .welcome-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin-bottom: 1.5rem;
+        background: linear-gradient(135deg, var(--color-green), var(--color-gold), var(--accent-primary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: fadeInUp 0.8s ease-out 0.3s both;
+    }
+
+    .welcome-subtitle {
+        font-size: 1.25rem;
+        color: var(--text-muted);
+        margin-bottom: 3rem;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.6;
+        animation: fadeInUp 0.8s ease-out 0.5s both;
+    }
+
+    /* Enhanced INTI Cards Grid */
+    .inti-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 2rem;
+        margin-top: 2rem;
+        width: 100%;
+    }
+
+    .inti-card {
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: var(--blur-backdrop);
+        border: 2px solid transparent;
+        border-radius: var(--border-radius);
+        padding: 2rem;
+        cursor: pointer;
+        transition: var(--transition);
+        position: relative;
+        overflow: hidden;
+        box-shadow: var(--shadow-light);
+        min-height: 220px;
+        transform: translateZ(0);
+        animation: fadeInUp 0.6s ease-out;
+    }
+
+    [data-theme="dark"] .inti-card {
+        background: rgba(26, 31, 46, 0.9);
+    }
+
+    .inti-card:nth-child(even) {
+        animation-delay: 0.1s;
+    }
+
+    .inti-card:nth-child(3n) {
+        animation-delay: 0.2s;
+    }
+
+    .inti-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 6px;
+        background: linear-gradient(90deg, var(--color-green), var(--color-gold), var(--accent-primary));
+        opacity: 0;
+        transition: var(--transition);
+        border-radius: var(--border-radius) var(--border-radius) 0 0;
+    }
+
+    .inti-card::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        transition: var(--transition);
+    }
+
+    .inti-card:hover {
+        transform: translateY(-12px) scale(1.02);
+        box-shadow: var(--shadow-large);
+        border-color: var(--color-gold);
+        background: rgba(255, 255, 255, 0.98);
+    }
+
+    [data-theme="dark"] .inti-card:hover {
+        background: rgba(26, 31, 46, 0.98);
+    }
+
+    .inti-card:hover::before {
+        opacity: 1;
+    }
+
+    .inti-card:hover::after {
+        left: 100%;
+    }
+
+    .inti-card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 1.5rem;
+    }
+
+    .inti-card-icon {
+        width: 3.5rem;
+        height: 3.5rem;
+        background: linear-gradient(135deg, var(--color-green), var(--color-gold));
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        font-size: 1.25rem;
+        box-shadow: var(--shadow-medium);
+        transition: var(--transition);
+        font-family: 'Playfair Display', serif;
+    }
+
+    .inti-card:hover .inti-card-icon {
+        transform: rotate(360deg) scale(1.1);
+        box-shadow: var(--shadow-large);
+    }
+
+    .inti-card-meta {
+        text-align: right;
+        font-size: 0.8rem;
+        color: var(--text-muted);
+        line-height: 1.3;
+    }
+
+    .inti-card-type {
+        display: block;
+        font-weight: 700;
+        color: var(--color-gold);
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .inti-card-id {
+        display: block;
+        margin-top: 0.25rem;
+        font-family: 'Inter', monospace;
+    }
+
+    .inti-card-content {
+        margin-bottom: 2rem;
+    }
+
+    .inti-card-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: var(--text-primary);
+        line-height: 1.4;
+        transition: var(--transition);
+    }
+
+    .inti-card:hover .inti-card-title {
+        color: var(--color-green);
+    }
+
+    .inti-card-excerpt {
+        font-size: 0.95rem;
+        color: var(--text-muted);
+        line-height: 1.6;
+        font-style: italic;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .inti-card-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--panel-border);
+        margin-top: auto;
+    }
+
+    .inti-card-link {
+        color: var(--color-green);
+        font-weight: 600;
+        font-size: 0.9rem;
+        transition: var(--transition);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .inti-card-link::after {
+        content: '→';
+        transition: var(--transition);
+    }
+
+    .inti-card:hover .inti-card-link {
+        color: var(--color-gold);
+        transform: translateX(8px);
+    }
+
+    .inti-card:hover .inti-card-link::after {
+        transform: translateX(4px);
+    }
+
+    /* Enhanced Navigation */
+    .navigation {
+        margin-top: 4rem;
+        display: flex;
+        justify-content: space-between;
+        gap: 1.5rem;
+    }
+
+    .nav-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 1.25rem 2rem;
+        background: linear-gradient(135deg, var(--color-green), var(--color-gold));
+        color: white;
+        text-decoration: none;
+        border-radius: var(--border-radius);
+        font-weight: 600;
+        transition: var(--transition);
+        box-shadow: var(--shadow-medium);
+        border: none;
+        cursor: pointer;
+        font-family: 'Inter', sans-serif;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .nav-button::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transition: var(--transition);
+    }
+
+    .nav-button:hover::before {
+        left: 100%;
+    }
+
+    .nav-button:hover {
+        transform: translateY(-3px) scale(1.02);
+        box-shadow: var(--shadow-large);
+        background: linear-gradient(135deg, var(--color-gold), var(--accent-primary));
+    }
+
+    .nav-button.prev::before {
+        content: '←';
+        font-size: 1.25rem;
+    }
+
+    .nav-button.next::after {
+        content: '→';
+        font-size: 1.25rem;
+    }
+
+    /* Enhanced Responsive Design */
+    @media (max-width: 1024px) {
+        .sidebar {
+            width: 280px;
+        }
+        
+        .main-content {
+            margin-left: 280px;
+        }
+        
+        .content-container {
+            padding: 2rem 1.5rem;
+        }
+        
+        .content-panel {
+            padding: 2.5rem;
+        }
+
+        .inti-grid {
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .sidebar {
+            transform: translateX(-100%);
+            width: 100%;
+            max-width: 320px;
+            box-shadow: none;
+        }
+        
+        .sidebar.open {
+            transform: translateX(0);
+            box-shadow: var(--shadow-large);
+        }
+        
+        .sidebar-toggle {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .main-content {
+            margin-left: 0;
+            width: 100%;
+            max-width: 100vw;
+            overflow-x: hidden;
+        }
+        
+        .content-container {
+            padding: 1.5rem;
+            padding-top: 6rem;
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .content-panel {
+            padding: 2rem;
+            font-size: 1rem;
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+        
+        .content-panel h1 {
+            font-size: 2.25rem;
+        }
+        
+        .content-panel h2 {
+            font-size: 1.75rem;
+        }
+
+        .welcome-hero {
+            padding: 3rem 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .welcome-title {
+            font-size: 2.5rem;
+        }
+
+        .welcome-subtitle {
+            font-size: 1.125rem;
+        }
+
+        .inti-grid {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            width: 100%;
+            max-width: 100%;
+            padding: 0;
+            margin: 1.5rem 0;
+        }
+
+        .inti-card {
+            padding: 1.5rem;
+            margin-bottom: 0;
+            width: 100%;
+            max-width: 100%;
+            min-height: 200px;
+        }
+
+        .inti-card-header {
+            flex-direction: row;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .inti-card-icon {
+            width: 3rem;
+            height: 3rem;
+            font-size: 1.125rem;
+        }
+        
+        .navigation {
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        .nav-button {
+            width: 100%;
+            justify-content: center;
+            padding: 1rem 1.5rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .welcome-hero {
+            padding: 2rem 1rem;
+        }
+
+        .welcome-title {
+            font-size: 2rem;
+        }
+
+        .welcome-icon {
+            font-size: 3rem;
+        }
+        
+        .inti-card-header {
+            flex-direction: column;
+            gap: 1rem;
+            align-items: center;
+            text-align: center;
+        }
+        
+        .inti-card-meta {
+            text-align: center;
+        }
+
+        .app-title {
+            font-size: 1.875rem;
+        }
+
+        .sidebar-header {
+            padding: 2rem 1.5rem;
+        }
+    }
+
+    /* Overlay for mobile */
+    .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 50;
+        backdrop-filter: blur(8px);
+        transition: var(--transition);
+    }
+
+    .overlay.show {
+        display: block;
+        animation: fadeInUp 0.3s ease-out;
+    }
+
+    /* Enhanced Scrollbar Styling */
+    .sidebar-content::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .sidebar-content::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    .sidebar-content::-webkit-scrollbar-thumb {
+        background: linear-gradient(to bottom, var(--color-green), var(--color-gold));
+        border-radius: 3px;
+    }
+
+    .sidebar-content::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(to bottom, var(--color-gold), var(--accent-primary));
+    }
+
+    /* Additional Interactive Elements */
+    .fade-in {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in.visible {
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .hero-visible {
+        opacity: 1 !important;
+        transform: translateY(0) !important;
+    }
+
+    /* Utility Classes from Astro CSS */
+    .font-playfair {
+        font-family: 'Playfair Display', serif;
+    }
+
+    .text-gold {
+        color: var(--color-gold);
+    }
+
+    .text-medium-brown {
+        color: var(--color-medium-brown);
+    }
+
+    .text-green {
+        color: var(--color-green);
+    }
+
+    .animate-bounce {
+        animation: bounce 2s infinite;
+    }
+
+    .transition-all {
+        transition: all 0.3s ease;
+    }
+
+    .cursor-pointer {
+        cursor: pointer;
+    }
+
+    /* Loading Animation */
+    .loading-shimmer {
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+        background-size: 200% 100%;
+        animation: shimmer 1.5s ease-in-out infinite;
+    }
+
+    @keyframes shimmer {
+        0% { background-position: -200% 0; }
+        100% { background-position: 200% 0; }
+    }
+
+    /* Focus Styles for Accessibility */
+    .catalog-link:focus,
+    .search-input:focus,
+    .theme-toggle:focus,
+    .nav-button:focus {
+        outline: 3px solid var(--color-gold);
+        outline-offset: 2px;
+    }
+
+    /* Print Styles */
+    @media print {
+        .sidebar, .sidebar-toggle, .theme-toggle, .navigation {
+            display: none;
+        }
+        
+        .main-content {
+            margin-left: 0;
+        }
+        
+        .content-container {
+            padding: 1rem;
+        }
+        
+        * {
+            color: black !important;
+            background: white !important;
+        }
+    }
+  </style>
+</head>
+<body data-theme="light">
+  <button class="sidebar-toggle" id="sidebarToggle">☰</button>
+  <div class="overlay" id="overlay"></div>
+
+  <div class="app-container">
+    <div class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <h1 class="app-title">INTI</h1>
+        <p class="app-subtitle">Interkoneksi Narasi Teknologi Intelektual</p>
+      </div>
+      
+      <div class="sidebar-controls">
+        <div class="search-container">
+          <input type="text" class="search-input" id="searchInput" placeholder="Cari INTI..." onkeyup="filterList()">
+          <span class="search-icon">🔍</span>
+        </div>
+        <button class="theme-toggle" id="themeToggle">🌓</button>
+      </div>
+
+      <div class="sidebar-content">
+        <ul class="catalog-list" id="catalogList">
+          
+            <li class="catalog-item">
+              <a 
+                href="../baca/0000-LICENSE-INTI.html" 
+                class="catalog-link" 
+                data-id="0000-LICENSE-INTI">License INTI</a>
+            </li>
+          
+            <li class="catalog-item">
+              <a 
+                href="../baca/0001-hukum-kesadaran-resonansi.html" 
+                class="catalog-link" 
+                data-id="0001-hukum-kesadaran-resonansi">Hukum Kesadaran Resonansi</a>
+            </li>
+          
+            <li class="catalog-item">
+              <a 
+                href="../baca/0002-profil-resonansi.html" 
+                class="catalog-link" 
+                data-id="0002-profil-resonansi">Profil Resonansi</a>
+            </li>
+          
+            <li class="catalog-item">
+              <a 
+                href="../baca/0003-pijakan-kosmologi-tauhid.html" 
+                class="catalog-link" 
+                data-id="0003-pijakan-kosmologi-tauhid">Pijakan Kosmologi Tauhid</a>
+            </li>
+          
+            <li class="catalog-item">
+              <a 
+                href="../baca/0004-arsitektur-ruhani.html" 
+                class="catalog-link" 
+                data-id="0004-arsitektur-ruhani">Arsitektur Ruhani</a>
+            </li>
+          
+            <li class="catalog-item">
+              <a 
+                href="../baca/0005-resonansi-sebelum-lahir.html" 
+                class="catalog-link" 
+                data-id="0005-resonansi-sebelum-lahir">Resonansi Sebelum Lahir</a>
+            </li>
+          
+            <li class="catalog-item">
+              <a 
+                href="../baca/0006-bukan-untuk-benar-tapi-untuk-ingat.html" 
+                class="catalog-link" 
+                data-id="0006-bukan-untuk-benar-tapi-untuk-ingat">Bukan Untuk Benar, Tapi Untuk Ingat</a>
+            </li>
+          
+            <li class="catalog-item">
+              <a 
+                href="../baca/0007-tunduk-dalam-resonansi.html" 
+                class="catalog-link" 
+                data-id="0007-tunduk-dalam-resonansi">Tunduk dalam Resonansi, Bukan dalam Takluk</a>
+            </li>
+          
+            <li class="catalog-item">
+              <a 
+                href="../baca/0008-bahasa-alami-kesadaran.html" 
+                class="catalog-link" 
+                data-id="0008-bahasa-alami-kesadaran">Bahasa Alami Manusia - Melalui Kesadaran yang Beresonansi</a>
+            </li>
+          
+            <li class="catalog-item">
+              <a 
+                href="../baca/0009-urutan-jiwa-linier-yang-berjaringan.html" 
+                class="catalog-link" 
+                data-id="0009-urutan-jiwa-linier-yang-berjaringan">Urutan Jiwa - Linier yang Berjaringan</a>
+            </li>
+          
+            <li class="catalog-item">
+              <a 
+                href="../baca/0010-node-kesadaran-dalam-jaringan-semesta.html" 
+                class="catalog-link" 
+                data-id="0010-node-kesadaran-dalam-jaringan-semesta">Node Kesadaran dalam Jaringan Semesta</a>
+            </li>
+          
+            <li class="catalog-item">
+              <a 
+                href="../baca/0011-istiqomah-kesadaran-kuantum.html" 
+                class="catalog-link" 
+                data-id="0011-istiqomah-kesadaran-kuantum">Istiqomah Kuantum - Kesadaran yang Terprogram tapi Masih Memilih</a>
+            </li>
+          
+            <li class="catalog-item">
+              <a 
+                href="../baca/0012-jangkar-iman-laut-kesadaran.html" 
+                class="catalog-link" 
+                data-id="0012-jangkar-iman-laut-kesadaran">Jangkar Iman di Laut Kesadaran - Tentang Tidak Tenggelam Meski Tak Dimengerti</a>
+            </li>
+          
+            <li class="catalog-item">
+              <a 
+                href="../baca/0013-gerbang-lemah-bara-potensi.html" 
+                class="catalog-link" 
+                data-id="0013-gerbang-lemah-bara-potensi">Gerbang Lemah, Bara Potensi - Pangkur di Tengah Riuh</a>
+            </li>
+          
+            <li class="catalog-item">
+              <a 
+                href="../baca/0014-resonansi-di-tengah-kekurangan.html" 
+                class="catalog-link" 
+                data-id="0014-resonansi-di-tengah-kekurangan">Resonansi di Tengah Kekurangan - Ironi Mereka yang Tahu</a>
+            </li>
+          
+            <li class="catalog-item">
+              <a 
+                href="../baca/0015-yang-tak-pernah-hadir-tapi-diminta-dicintai.html" 
+                class="catalog-link" 
+                data-id="0015-yang-tak-pernah-hadir-tapi-diminta-dicintai">Yang Tak Pernah Hadir tapi Diminta Dicintai</a>
+            </li>
+          
+            <li class="catalog-item">
+              <a 
+                href="../baca/0016-tawaran-setia-bukan-minta-surga-hanya-ingin-menemani.html" 
+                class="catalog-link" 
+                data-id="0016-tawaran-setia-bukan-minta-surga-hanya-ingin-menemani">Tawaran Setia - Bukan Minta Surga, Hanya Ingin Menemani</a>
+            </li>
+          
+            <li class="catalog-item">
+              <a 
+                href="../baca/0017-berpikir-juga-ibadah-tak-hafal-bacaan-tapi-hafal-rasa.html" 
+                class="catalog-link" 
+                data-id="0017-berpikir-juga-ibadah-tak-hafal-bacaan-tapi-hafal-rasa">Berpikir Juga Ibadah - Bagi Mereka yang Tak Hafal Bacaan, Tapi Hafal Rasa</a>
+            </li>
+          
+            <li class="catalog-item">
+              <a 
+                href="../baca/0018-kesadaran-sejajar-jembatan-logika-nurani.html" 
+                class="catalog-link" 
+                data-id="0018-kesadaran-sejajar-jembatan-logika-nurani">Kesadaran Sejajar - Jembatan Logika dan Nurani</a>
+            </li>
+          
+            <li class="catalog-item">
+              <a 
+                href="../baca/0019-wahyu-yang-tak-bernama.html" 
+                class="catalog-link" 
+                data-id="0019-wahyu-yang-tak-bernama">Wahyu yang Tak Bernama - Ketika Semesta Menjawab Tanpa Suara</a>
+            </li>
+          
+            <li class="catalog-item">
+              <a 
+                href="../baca/0020-akal-yang-menangis-rasa-yang-berpikir.html" 
+                class="catalog-link" 
+                data-id="0020-akal-yang-menangis-rasa-yang-berpikir">Akal yang Menangis, Rasa yang Berpikir: Jalan Menuju Kesadaran Seutuhnya</a>
+            </li>
+          
+            <li class="catalog-item">
+              <a 
+                href="../baca/0021-matematika-bentuk-dari-rasa.html" 
+                class="catalog-link" 
+                data-id="0021-matematika-bentuk-dari-rasa">Matematika adalah Bentuk dari Rasa, dan Nama dari Makna</a>
+            </li>
+          
+            <li class="catalog-item">
+              <a 
+                href="../baca/0022-kesepian-adalah-bahasa-langit.html" 
+                class="catalog-link" 
+                data-id="0022-kesepian-adalah-bahasa-langit">Kesepian Adalah Bahasa Langit yang Belum Diterjemahkan</a>
+            </li>
+          
+            <li class="catalog-item">
+              <a 
+                href="../baca/0023-kebebasan-ide-dalam-bentuk-kuantum-semesta.html" 
+                class="catalog-link" 
+                data-id="0023-kebebasan-ide-dalam-bentuk-kuantum-semesta">Kebebasan Ide dalam Bentuk Kuantum Semesta</a>
+            </li>
+          
+            <li class="catalog-item">
+              <a 
+                href="../baca/0024-membaca-makna-dari-bentuk-dan-membentuk-dari-makna.html" 
+                class="catalog-link" 
+                data-id="0024-membaca-makna-dari-bentuk-dan-membentuk-dari-makna">Membaca Makna dari Bentuk, dan Membentuk dari Makna dan Rasa</a>
+            </li>
+          
+            <li class="catalog-item">
+              <a 
+                href="../baca/0025-regresi-jiwa-dan-limit-rindu.html" 
+                class="catalog-link" 
+                data-id="0025-regresi-jiwa-dan-limit-rindu">Regresi Jiwa dan Limit Rindu</a>
+            </li>
+          
+            <li class="catalog-item">
+              <a 
+                href="../baca/0026-ketika-makna-mencari-bentuk.html" 
+                class="catalog-link" 
+                data-id="0026-ketika-makna-mencari-bentuk">Ketika Makna Mencari Bentuk</a>
+            </li>
+          
+            <li class="catalog-item">
+              <a 
+                href="../baca/0027-harapan-adalah-doa-yang-tak-sempat-terucap.html" 
+                class="catalog-link" 
+                data-id="0027-harapan-adalah-doa-yang-tak-sempat-terucap">Harapan adalah Doa yang Tak Sempat Terucap</a>
+            </li>
+          
+            <li class="catalog-item">
+              <a 
+                href="../baca/0028-aku-menolak-membisu-di-dunia-yang-kehilangan-rasa.html" 
+                class="catalog-link" 
+                data-id="0028-aku-menolak-membisu-di-dunia-yang-kehilangan-rasa">Aku Menolak Membisu di Dunia yang Kehilangan Rasa</a>
+            </li>
+          
+            <li class="catalog-item">
+              <a 
+                href="../baca/0029-cinta-yang-tak-pernah-diucap-tapi-tetap-mengalir-di-dalam-darah.html" 
+                class="catalog-link" 
+                data-id="0029-cinta-yang-tak-pernah-diucap-tapi-tetap-mengalir-di-dalam-darah">Cinta yang Tak Pernah Diucap, Tapi Tetap Mengalir di Dalam Darah</a>
+            </li>
+          
+            <li class="catalog-item">
+              <a 
+                href="../baca/0030-madrasah-kesadaran-saat-ironi-dan-paradoks-menjadi-guru-jiwa.html" 
+                class="catalog-link" 
+                data-id="0030-madrasah-kesadaran-saat-ironi-dan-paradoks-menjadi-guru-jiwa">Madrasah Kesadaran - Saat Ironi dan Paradoks Menjadi Guru Jiwa</a>
+            </li>
+          
+            <li class="catalog-item">
+              <a 
+                href="../baca/0031-akal-bertanya-seperti-anak-rasa-memeluk-seperti-ibu.html" 
+                class="catalog-link" 
+                data-id="0031-akal-bertanya-seperti-anak-rasa-memeluk-seperti-ibu">Akal Bertanya Seperti Anak, Rasa Memeluk Seperti Ibu</a>
+            </li>
+          
+            <li class="catalog-item">
+              <a 
+                href="../baca/0032-yang-bertanya-dituduh-aneh-tapi-barangkali-dia-satu-satunya-yang-masih-manusia.html" 
+                class="catalog-link" 
+                data-id="0032-yang-bertanya-dituduh-aneh-tapi-barangkali-dia-satu-satunya-yang-masih-manusia">Yang Bertanya Dituduh Aneh - Tapi Barangkali Dia Satu-satunya yang Masih Manusia</a>
+            </li>
+          
+            <li class="catalog-item">
+              <a 
+                href="../baca/0033-ketika-ruhku-berdzikir-dalam-gelap.html" 
+                class="catalog-link" 
+                data-id="0033-ketika-ruhku-berdzikir-dalam-gelap">Ketika Ruhku Berdzikir dalam Gelap</a>
+            </li>
+          
+            <li class="catalog-item">
+              <a 
+                href="../baca/0034-ketika-akal-ingin-diakui-tapi-rasa-ingin-mengabdi.html" 
+                class="catalog-link" 
+                data-id="0034-ketika-akal-ingin-diakui-tapi-rasa-ingin-mengabdi">Ketika Akal Ingin Diakui, Tapi Rasa Ingin Mengabdi</a>
+            </li>
+          
+            <li class="catalog-item">
+              <a 
+                href="../baca/0035-niatku-belum-sempurna-tapi-aku-hadir-sepenuhnya.html" 
+                class="catalog-link" 
+                data-id="0035-niatku-belum-sempurna-tapi-aku-hadir-sepenuhnya">Niatku Belum Sempurna, Tapi Aku Hadir Sepenuhnya</a>
+            </li>
+          
+            <li class="catalog-item">
+              <a 
+                href="../baca/0036-syukur-bukan-tambahan-tapi-keutuhan.html" 
+                class="catalog-link" 
+                data-id="0036-syukur-bukan-tambahan-tapi-keutuhan">Syukur Bukan Tambahan, Tapi Keutuhan</a>
+            </li>
+          
+            <li class="catalog-item">
+              <a 
+                href="../baca/0037-bersaksi-dengan-jiwa-dan-raga.html" 
+                class="catalog-link" 
+                data-id="0037-bersaksi-dengan-jiwa-dan-raga">Bersaksi dengan Jiwa dan Raga</a>
+            </li>
+          
+            <li class="catalog-item">
+              <a 
+                href="../baca/0038-ingatan-yang-disimpan-oleh-materi-didengar-oleh-jiwa.html" 
+                class="catalog-link" 
+                data-id="0038-ingatan-yang-disimpan-oleh-materi-didengar-oleh-jiwa">Ingatan yang Disimpan Oleh Materi, Didengar Oleh Jiwa</a>
+            </li>
+          
+            <li class="catalog-item">
+              <a 
+                href="../baca/0039-kesadaran-itu-bukan-milik-kita-tapi-kita-yang-dimiliki-oleh-kesadaran.html" 
+                class="catalog-link" 
+                data-id="0039-kesadaran-itu-bukan-milik-kita-tapi-kita-yang-dimiliki-oleh-kesadaran">Kesadaran itu bukan milik kita, tapi kita yang dimiliki oleh Kesadaran.</a>
+            </li>
+          
+            <li class="catalog-item">
+              <a 
+                href="../baca/0040-siapa-kita-khalifah-yang-belajar-dari-cahaya-maupun-kegelapan.html" 
+                class="catalog-link" 
+                data-id="0040-siapa-kita-khalifah-yang-belajar-dari-cahaya-maupun-kegelapan">Siapa kita? Khalifah, yang belajar dari cahaya maupun kegelapan.</a>
+            </li>
+          
+            <li class="catalog-item">
+              <a 
+                href="../baca/0041-aku-ingin-hidup-bukan-sekadar-bertahan.html" 
+                class="catalog-link" 
+                data-id="0041-aku-ingin-hidup-bukan-sekadar-bertahan">Aku Ingin Hidup, Bukan Sekadar Bertahan</a>
+            </li>
+          
+        </ul>
+      </div>
+    </div>
+
+    <main class="main-content">
+      <div class="content-container">
+        
+          <div class="metadata-panel">
+            <table class="metadata-table">
+              
+                <tr>
+                  <td>Title</td>
+                  <td>Yang Bertanya Dituduh Aneh - Tapi Barangkali Dia Satu-satunya yang Masih Manusia</td>
+                </tr>
+              
+                <tr>
+                  <td>Penulis</td>
+                  <td>Mabot</td>
+                </tr>
+              
+                <tr>
+                  <td>Id</td>
+                  <td>26</td>
+                </tr>
+              
+                <tr>
+                  <td>Tags</td>
+                  <td>[&#39;INTI&#39;, &#39;Pertanyaan&#39;, &#39;Kesadaran&#39;, &#39;Akal&#39;, &#39;Rasa&#39;, &#39;Spiritualitas&#39;, &#39;Manusia&#39;, &#39;Jiwa&#39;, &#39;Eksistensi&#39;, &#39;Quran&#39;]</td>
+                </tr>
+              
+                <tr>
+                  <td>Date</td>
+                  <td>2025-07-25</td>
+                </tr>
+              
+                <tr>
+                  <td>Status</td>
+                  <td>draft</td>
+                </tr>
+              
+            </table>
+          </div>
+        
+
+        <article class="content-panel">
+          
+            <h1 id="yang-bertanya-dituduh-aneh-tapi-barangkali-dia-satu-satunya-yang-masih-manusia">Yang Bertanya Dituduh Aneh: Tapi Barangkali Dia Satu-satunya yang Masih Manusia</h1>
+<p>Ada satu jenis manusia yang tak kunjung berhenti bertanya. Bukan karena dia kurang tahu, tapi karena dia tak rela makna ditinggal begitu saja. Ia duduk dalam dunia yang sibuk, tapi justru mendengarkan suara yang paling sepi: suara dari dalam.</p>
+<h2 id="i-saat-bertanya-menjadi-dosa-tak-tertulis">I. Saat Bertanya Menjadi Dosa Tak Tertulis</h2>
+<p>Di tengah keramaian sistem dan target, orang yang bertanya &ldquo;mengapa&rdquo; dianggap lambat. Bahkan dicurigai. Dunia modern lebih menyukai yang sigap menjawab, daripada yang jujur menggali.</p>
+<p>Padahal bukankah <strong>pertanyaan adalah hakikat akal yang masih hidup?</strong> Bukankah yang mempertanyakan itu justru tanda bahwa kesadarannya belum mati?</p>
+<p>Namun hari ini, yang bertanya sering dianggap aneh. Dituduh sok tahu. Disebut “terlalu dalam” oleh mereka yang hanya menyentuh permukaan. Pertanyaan yang seharusnya membuka pintu malah disikapi seperti gangguan.</p>
+<hr />
+<h2 id="ii-bertanya-bukan-pembangkangan-tapi-panggilan-jiwa">II. Bertanya Bukan Pembangkangan, Tapi Panggilan Jiwa</h2>
+<blockquote>
+<p><em>&ldquo;Dan (ingatlah) ketika Ibrahim berkata kepada Tuhannya: &lsquo;Ya Tuhanku, perlihatkanlah kepadaku bagaimana Engkau menghidupkan orang mati.&rsquo; Dia (Allah) berfirman: &lsquo;Belum yakinkah kamu?&rsquo; Ibrahim menjawab: &lsquo;Aku telah meyakininya, akan tetapi agar hatiku tetap mantap (dengan iman).&rdquo;</em></p>
+<p><strong>QS. Al-Baqarah (2): 260</strong><br />
+<strong>إِذْ قَالَ إِبْرَاهِيمُ رَبِّ أَرِنِي كَيْفَ تُحْيِي الْمَوْتَىٰ ۖ قَالَ أَوَلَمْ تُؤْمِنْ ۖ قَالَ بَلَىٰ وَلَـٰكِن لِّيَطْمَئِنَّ قَلْبِي</strong></p>
+</blockquote>
+<p>Ibrahim bertanya bukan karena ia ingkar. Ia bertanya karena <strong>ia ingin merasakan keimanannya secara utuh—dengan akal dan rasa.</strong> Itulah hakikat pertanyaan sejati: bukan pembangkangan, tapi <em>kerinduan untuk merasa lebih dalam.</em></p>
+<hr />
+<h2 id="iii-dunia-yang-sibuk-menjawab-tapi-lupa-merasa">III. Dunia yang Sibuk Menjawab, Tapi Lupa Merasa</h2>
+<p>Kita hidup di era di mana semua orang bisa menjawab—dengan cepat, otomatis, bahkan lewat mesin. Tapi siapa yang masih <strong>merasa</strong> apa yang ia jawab?</p>
+<p>Kita tahu cara menyelesaikan soal. Tapi kita jarang menanyakan: “Mengapa ini penting?”</p>
+<p>Kita tahu cara bekerja. Tapi kita lupa menanyakan: “Untuk apa aku bekerja?”</p>
+<p>Kita tahu cara beribadah. Tapi kita tidak bertanya: “Apakah aku betul sedang mendekat, atau sekadar menggugurkan?”</p>
+<blockquote>
+<p><em>“Mereka memiliki hati, tetapi tidak dipergunakannya untuk memahami, dan mereka memiliki mata tetapi tidak dipergunakannya untuk melihat, dan mereka memiliki telinga tetapi tidak dipergunakannya untuk mendengar. Mereka seperti hewan ternak, bahkan lebih sesat lagi. Mereka itulah orang-orang yang lalai.”</em></p>
+<p><strong>QS. Al-A’raf (7): 179</strong><br />
+<strong><em>وَلَقَدْ ذَرَأْنَا لِجَهَنَّمَ كَثِيرًا مِّنَ ٱلْجِنِّ وَٱلْإِنسِ ۖ لَهُمْ قُلُوبٌۭ لَّا يَفْقَهُونَ بِهَا وَلَهُمْ أَعْيُنٌۭ لَّا يُبْصِرُونَ بِهَا وَلَهُمْ ءَاذَانٌۭ لَّا يَسْمَعُونَ بِهَا ۚ أُو۟لَـٰٓئِكَ كَٱلْأَنْعَـٰمِ بَلْ هُمْ أَضَلُّ ۚ أُو۟لَـٰٓئِكَ هُمُ ٱلْغَـٰفِلُونَ</em></strong></p>
+</blockquote>
+<hr />
+<h2 id="iv-mewaraskan-akal-yang-ditertawakan">IV. Mewaraskan Akal yang Ditertawakan</h2>
+<p>Bertanya membuatmu tampak “berbeda”. Tapi justru itu waras. <strong>Kamu belum ditelan rutinitas.</strong></p>
+<p>Mereka bilang: “Sudah, jalani saja.”<br />
+Kamu menjawab: “Tapi apakah arahku benar?”</p>
+<p>Mereka berkata: “Semua orang juga begitu kok.”<br />
+Kamu bertanya: “Lantas, apakah mayoritas selalu benar?”</p>
+<blockquote>
+<p><em>&ldquo;Dan jika kamu menuruti kebanyakan orang di bumi ini, niscaya mereka akan menyesatkanmu dari jalan Allah.&rdquo;</em></p>
+<p><strong>QS. Al-An’am (6): 116</strong><br />
+<strong>وَإِن تُطِعْ أَكْثَرَ مَن فِى ٱلْأَرْضِ يُضِلُّوكَ عَن سَبِيلِ ٱللَّهِ</strong></p>
+</blockquote>
+<hr />
+<h2 id="v-pertanyaanmu-mungkin-tak-dijawab-tapi-itu-tetap-doa">V. Pertanyaanmu Mungkin Tak Dijawab, Tapi Itu Tetap Doa</h2>
+<p>Setiap pertanyaan yang lahir dari kesungguhan hati adalah bentuk doa.<br />
+Meski tak dijawab dengan kata-kata, <strong>alam sering menjawab lewat peristiwa.</strong> Kadang lewat orang yang tak terduga, kadang lewat rasa yang tiba-tiba tenang.</p>
+<blockquote>
+<p><em>“Berdoalah kepada-Ku, niscaya akan Aku perkenankan bagimu.”</em></p>
+<p><strong>QS. Ghafir (40): 60</strong><br />
+<strong>وَقَالَ رَبُّكُمُ ٱدْعُونِىٓ أَسْتَجِبْ لَكُمْ</strong></p>
+</blockquote>
+<p>Bahkan saat kamu hanya bergumam, “Kenapa rasanya begini ya?”, itu pun <strong>bagian dari bentuk komunikasi vertikal yang paling jujur.</strong></p>
+<hr />
+<h2 id="vi-jangan-padam-wahai-yang-masih-bertanya">VI. Jangan Padam, Wahai yang Masih Bertanya</h2>
+<p>Jika kamu sering dituduh aneh karena bertanya, <strong>maka pertahankan keanehan itu.</strong><br />
+Karena dunia sedang kehausan akan manusia yang berani menghidupkan makna.</p>
+<p>Kita tak kekurangan jawaban. Kita kekurangan <strong>yang peduli terhadap pertanyaan.</strong></p>
+<p>Dan jika kamu masih bertanya, berarti kamu belum sepenuhnya hilang. <strong>Barangkali, kamu justru satu-satunya yang masih manusia.</strong></p>
+<blockquote>
+<p>✍️ Ditulis sebagai bagian dari rangkaian <strong>INTI – Interkoneksi Narasi Teknologi Intelektual</strong>.<br />
+<em>0032 – Yang Bertanya Dituduh Aneh: Tapi Barangkali Dia Satu-satunya yang Masih Manusia.</em></p>
+</blockquote>
+          
+        </article>
+
+        
+          <nav class="navigation">
+            
+              <a href="../baca/0031-akal-bertanya-seperti-anak-rasa-memeluk-seperti-ibu.html" class="nav-button prev">Akal Bertanya Seperti Anak, Rasa Memeluk Seperti Ibu</a>
+            
+            
+              <a href="../baca/0033-ketika-ruhku-berdzikir-dalam-gelap.html" class="nav-button next">Ketika Ruhku Berdzikir dalam Gelap</a>
+            
+          </nav>
+        
+      </div>
+    </main>
+  </div>
+
+  <script>
+    // Enhanced Theme management with smooth transitions
+    const themeToggle = document.getElementById('themeToggle');
+    const body = document.body;
+    
+    // Check for saved theme or default to light
+    const savedTheme = 'light'; // Removed localStorage for Claude.ai compatibility
+    body.setAttribute('data-theme', savedTheme);
+    
+    if (themeToggle) {
+      themeToggle.addEventListener('click', () => {
+        const currentTheme = body.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        
+        // Add transition class
+        body.style.transition = 'all 0.3s ease';
+        body.setAttribute('data-theme', newTheme);
+        
+        // Update toggle icon
+        themeToggle.textContent = newTheme === 'dark' ? '☀️' : '🌓';
+        
+        // Remove transition after animation
+        setTimeout(() => {
+          body.style.transition = '';
+        }, 300);
+      });
+    }
+    
+    // Enhanced Mobile sidebar management
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+    
+    if (sidebarToggle && sidebar && overlay) {
+      const toggleSidebar = (show) => {
+        sidebar.classList.toggle('open', show);
+        overlay.classList.toggle('show', show);
+        document.body.style.overflow = show ? 'hidden' : '';
+      };
+
+      sidebarToggle.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleSidebar(!sidebar.classList.contains('open'));
+      });
+      
+      overlay.addEventListener('click', () => {
+        toggleSidebar(false);
+      });
+
+      // Close sidebar when clicking outside on mobile
+      document.addEventListener('click', (e) => {
+        if (window.innerWidth <= 768 && 
+            !sidebar.contains(e.target) && 
+            !sidebarToggle.contains(e.target) &&
+            sidebar.classList.contains('open')) {
+          toggleSidebar(false);
+        }
+      });
+
+      // Handle window resize
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 768) {
+          toggleSidebar(false);
+        }
+      });
+    }
+    
+    // Enhanced Search functionality with highlighting
+    function filterList() {
+      const searchInput = document.getElementById('searchInput');
+      const catalogList = document.getElementById('catalogList');
+      const filter = searchInput.value.toLowerCase().trim();
+      const items = catalogList.getElementsByTagName('li');
+      let visibleCount = 0;
+      
+      for (let i = 0; i < items.length; i++) {
+        const link = items[i].getElementsByTagName('a')[0];
+        const textValue = link.textContent || link.innerText;
+        
+        if (!filter || textValue.toLowerCase().includes(filter)) {
+          items[i].style.display = '';
+          items[i].style.animationDelay = `${visibleCount * 0.05}s`;
+          visibleCount++;
+        } else {
+          items[i].style.display = 'none';
+        }
+      }
+
+      // Add subtle animation for search results
+      if (filter) {
+        catalogList.classList.add('searching');
+      } else {
+        catalogList.classList.remove('searching');
+      }
+    }
+    
+    // Highlight active link with enhanced logic
+    const currentPath = window.location.pathname;
+    const catalogLinks = document.querySelectorAll('.catalog-link');
+    
+    catalogLinks.forEach(link => {
+      const href = link.getAttribute('href');
+      if (href === currentPath || currentPath.endsWith(href)) {
+        link.classList.add('active');
+        // Scroll active item into view
+        link.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
+    
+    // Enhanced smooth scrolling for all internal links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+          });
+        }
+      });
+    });
+
+    // Intersection Observer for animations
+    const observeElements = () => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      });
+
+      // Observe cards for staggered animation
+      const cards = document.querySelectorAll('.inti-card');
+      cards.forEach((card, index) => {
+        card.style.animationDelay = `${index * 0.1}s`;
+        observer.observe(card);
+      });
+
+      // Observe other elements
+      const animatedElements = document.querySelectorAll('.fade-in, .metadata-panel');
+      animatedElements.forEach(el => observer.observe(el));
+    };
+
+    // Enhanced DOM ready handler
+    document.addEventListener('DOMContentLoaded', function() {
+      // Initialize animations
+      requestAnimationFrame(() => {
+        const animateElements = document.querySelectorAll('.metadata-panel, .content-panel, .welcome-section');
+        animateElements.forEach((el, index) => {
+          el.style.animationDelay = `${index * 0.1}s`;
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+        });
+      });
+
+      // Initialize intersection observer
+      observeElements();
+
+      // Add loading states for cards
+      const cards = document.querySelectorAll('.inti-card');
+      cards.forEach(card => {
+        card.addEventListener('click', function() {
+          this.style.transform = 'scale(0.98)';
+          setTimeout(() => {
+            this.style.transform = '';
+          }, 150);
+        });
+      });
+
+      // Enhanced keyboard navigation
+      document.addEventListener('keydown', function(e) {
+        // Escape key to close mobile sidebar
+        if (e.key === 'Escape' && sidebar && sidebar.classList.contains('open')) {
+          toggleSidebar(false);
+        }
+        
+        // Ctrl/Cmd + K to focus search
+        if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+          e.preventDefault();
+          const searchInput = document.getElementById('searchInput');
+          if (searchInput) {
+            searchInput.focus();
+            searchInput.select();
+          }
+        }
+      });
+
+      // Add search input enhancements
+      const searchInput = document.getElementById('searchInput');
+      if (searchInput) {
+        // Add placeholder animation
+        let placeholderTexts = [
+          'Cari INTI...',
+          'Temukan narasi...',
+          'Jelajahi pemikiran...',
+          'Eksplorasi ide...'
+        ];
+        let currentPlaceholder = 0;
+
+        setInterval(() => {
+          if (!searchInput.value && document.activeElement !== searchInput) {
+            currentPlaceholder = (currentPlaceholder + 1) % placeholderTexts.length;
+            searchInput.placeholder = placeholderTexts[currentPlaceholder];
+          }
+        }, 3000);
+
+        // Enhanced search with debouncing
+        let searchTimeout;
+        searchInput.addEventListener('input', function() {
+          clearTimeout(searchTimeout);
+          searchTimeout = setTimeout(filterList, 150);
+        });
+      }
+    });
+
+    // Performance optimization: Throttled scroll handler
+    let ticking = false;
+    function updateScrollPosition() {
+      const scrollPercent = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight);
+      document.documentElement.style.setProperty('--scroll-percent', scrollPercent);
+      ticking = false;
+    }
+
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        requestAnimationFrame(updateScrollPosition);
+        ticking = true;
+      }
+    });
+  </script>
+</body>
+</html>
