@@ -260,29 +260,44 @@ body {
   position: sticky;
   top: 72px;
   z-index: 90;
-  background: rgba(249, 247, 243, 0.88);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  background: rgba(249, 247, 243, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   padding: 1.25rem 0 1rem;
   border-bottom: 1px solid transparent;
   transition: padding 0.25s ease, background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 [data-theme="dark"] .sticky-filter-wrapper {
-  background: rgba(21, 20, 18, 0.90);
+  background: rgba(21, 20, 18, 0.96);
 }
 
-/* Saat di-scroll (is-stuck): lebih ramping dan berbayang halus */
+/* Saat di-scroll (is-stuck): super ramping, HANYA search bar (tagging disembunyikan agar tidak memakan layar) */
 .sticky-filter-wrapper.is-stuck {
-  padding: 0.75rem 0 0.7rem;
-  border-bottom-color: var(--border-color);
-  background: rgba(249, 247, 243, 0.96);
-  box-shadow: 0 10px 30px rgba(93, 78, 55, 0.08);
+  padding: 0.45rem 0;
+  border-bottom: 1px solid var(--border-color);
+  background: rgba(249, 247, 243, 0.98);
+  box-shadow: 0 8px 24px rgba(93, 78, 55, 0.07);
+}
+
+.sticky-filter-wrapper.is-stuck .tag-filters {
+  display: none !important;
+}
+
+.sticky-filter-wrapper.is-stuck .search-box-wrapper {
+  padding: 0.25rem 0.6rem 0.25rem 1.25rem;
+  box-shadow: none;
+  border-width: 1.5px;
+}
+
+.sticky-filter-wrapper.is-stuck .catalog-search-input {
+  height: 36px;
+  font-size: 0.9rem;
 }
 
 [data-theme="dark"] .sticky-filter-wrapper.is-stuck {
-  background: rgba(21, 20, 18, 0.96);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+  background: rgba(21, 20, 18, 0.98);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
 }
 
 /* Search Bar Panjang di Atas */
@@ -415,7 +430,7 @@ body {
 /* Main Grid Section */
 .catalog-main {
   flex: 1;
-  padding-bottom: 5rem;
+  padding: 1.5rem 0 5rem;
 }
 
 .inti-grid {
@@ -727,48 +742,65 @@ body {
 
 /* Responsive */
 @media (max-width: 768px) {
+  .nav-inner {
+    height: 56px;
+  }
+  .nav-brand-title {
+    display: none;
+  }
+  .nav-back-link {
+    font-size: 0.85rem;
+    padding: 0.35rem 0.75rem;
+  }
+  .theme-toggle {
+    width: 38px;
+    height: 38px;
+  }
   .catalog-hero {
-    padding: 2.75rem 0 1.25rem;
+    padding: 2.25rem 0 1rem;
   }
   .sticky-filter-wrapper {
-    top: 64px;
-    padding: 0.85rem 0 0.75rem;
+    top: 56px;
+    padding: 0.75rem 0 0.6rem;
   }
+  
+  /* Saat discroll di mobile: jadikan filter super ramping (hanya search bar) */
   .sticky-filter-wrapper.is-stuck {
-    padding: 0.6rem 0 0.55rem;
+    padding: 0.35rem 0;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.07);
   }
+  .sticky-filter-wrapper.is-stuck .search-box-wrapper {
+    padding: 0.2rem 0.5rem 0.2rem 0.9rem;
+    border-width: 1.5px;
+    box-shadow: none;
+  }
+  .sticky-filter-wrapper.is-stuck .catalog-search-input {
+    font-size: 0.82rem;
+    height: 32px;
+  }
+  .sticky-filter-wrapper.is-stuck .search-box-icon {
+    width: 16px;
+    height: 16px;
+  }
+  .sticky-filter-wrapper.is-stuck .tag-filters {
+    display: none;
+  }
+
   .tag-filters {
     gap: 0.45rem;
     margin-top: 0.75rem;
   }
-  .sticky-filter-wrapper.is-stuck .tag-filters {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    justify-content: flex-start;
-    padding-bottom: 4px;
-    scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
-  }
-  .sticky-filter-wrapper.is-stuck .tag-filters::-webkit-scrollbar {
-    display: none;
-  }
-  .sticky-filter-wrapper.is-stuck .tag-pill {
-    flex-shrink: 0;
-    white-space: nowrap;
+  .tag-pill {
+    font-size: 0.8rem;
+    padding: 0.35rem 0.85rem;
   }
   .inti-grid {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
-  .nav-inner {
-    height: 64px;
-  }
-  .nav-brand-title {
-    display: none;
-  }
   .back-to-top {
-    bottom: 1.5rem;
-    right: 1.5rem;
+    bottom: 1.25rem;
+    right: 1.25rem;
     width: 42px;
     height: 42px;
   }
