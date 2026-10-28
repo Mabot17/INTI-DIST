@@ -3822,7 +3822,15 @@
     </div>
   </footer>
 
-  <!-- Script: Theme Toggle & Real-time Live Search & Tag Filter -->
+  <!-- Floating Back to Top Button -->
+  <button id="backToTop" class="back-to-top" onclick="scrollToTop()" aria-label="Kembali ke atas">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="12" y1="19" x2="12" y2="5"></line>
+      <polyline points="5 12 12 5 19 12"></polyline>
+    </svg>
+  </button>
+
+  <!-- Script: Theme Toggle & Real-time Live Search & Tag Filter & Back to Top -->
   <script>
     // 1. Theme Management (Sinkron dengan halaman utama INTISATU)
     (function initTheme() {
@@ -3850,6 +3858,34 @@
     function navigateTo(url) {
       window.location.href = url;
     }
+
+    // Function Scroll to Top (Multi-browser support)
+    function scrollToTop() {
+      try {
+        window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+      } catch (err) {
+        window.scrollTo(0, 0);
+      }
+      if (document.documentElement) {
+        document.documentElement.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+      }
+      if (document.body) {
+        document.body.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+      }
+    }
+
+    // Scroll listener for Back to Top Button
+    window.addEventListener('scroll', function() {
+      const btn = document.getElementById('backToTop');
+      if (btn) {
+        const scrolled = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
+        if (scrolled > 250) {
+          btn.classList.add('visible');
+        } else {
+          btn.classList.remove('visible');
+        }
+      }
+    }, { passive: true });
 
     const cards = document.querySelectorAll('.inti-card');
     cards.forEach(card => {
@@ -3970,33 +4006,6 @@
         }
       }
     });
-
-    // 4. Back to Top Button
-    const backToTopBtn = document.getElementById('backToTop');
-    if (backToTopBtn) {
-      window.addEventListener('scroll', function() {
-        if (window.scrollY > 300) {
-          backToTopBtn.classList.add('visible');
-        } else {
-          backToTopBtn.classList.remove('visible');
-        }
-      });
-
-      backToTopBtn.addEventListener('click', function() {
-        window.scrollTo({
-          top: 0,
-          behavior: 'smooth'
-        });
-      });
-    }
   </script>
-
-  <!-- Floating Back to Top Button -->
-  <button id="backToTop" class="back-to-top" aria-label="Kembali ke atas">
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-      <line x1="12" y1="19" x2="12" y2="5"></line>
-      <polyline points="5 12 12 5 19 12"></polyline>
-    </svg>
-  </button>
 </body>
 </html>
