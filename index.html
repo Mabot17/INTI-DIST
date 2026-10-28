@@ -100,8 +100,12 @@
       <span class="hero-eyebrow">Simpul Pemikiran & Resonansi</span>
       <h1 class="hero-title">DIREKTORI INTI</h1>
       <p class="hero-subtitle">Menyulam Simpul Kesadaran & Jejak Makna</p>
+    </div>
+  </header>
 
-      <!-- Search Section Panjang di Tengah Atas -->
+  <!-- Sticky Search & Filter Bar (Two-Tier Sticky: Menempel Rapi di Bawah Navbar saat Scroll) -->
+  <div class="sticky-filter-wrapper" id="stickyFilterWrapper">
+    <div class="container">
       <div class="search-section">
         <div class="search-box-wrapper">
           <svg class="search-box-icon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -144,7 +148,7 @@
         
       </div>
     </div>
-  </header>
+  </div>
 
   <!-- Main Catalog Grid Section -->
   <main class="catalog-main">
@@ -3874,15 +3878,25 @@
       }
     }
 
-    // Scroll listener for Back to Top Button
+    // Scroll listener for Back to Top Button & Sticky Filter State
     window.addEventListener('scroll', function() {
+      const scrolled = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
+      
       const btn = document.getElementById('backToTop');
       if (btn) {
-        const scrolled = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
         if (scrolled > 250) {
           btn.classList.add('visible');
         } else {
           btn.classList.remove('visible');
+        }
+      }
+
+      const stickyFilter = document.getElementById('stickyFilterWrapper');
+      if (stickyFilter) {
+        if (scrolled > 120) {
+          stickyFilter.classList.add('is-stuck');
+        } else {
+          stickyFilter.classList.remove('is-stuck');
         }
       }
     }, { passive: true });

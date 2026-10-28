@@ -190,7 +190,7 @@ body {
 
 /* Hero Section (Center Alignment) */
 .catalog-hero {
-  padding: 4.5rem 0 2.5rem;
+  padding: 3.75rem 0 1.25rem;
   text-align: center;
   position: relative;
   display: flex;
@@ -248,17 +248,47 @@ body {
   font-size: clamp(1.15rem, 2.5vw, 1.45rem);
   font-style: italic;
   color: var(--text-secondary);
-  margin: 0 auto 2.75rem;
+  margin: 0 auto 0.5rem;
   max-width: 680px;
   text-align: center;
   display: block;
   width: 100%;
 }
 
+/* Sticky Search & Filter Bar (Two-Tier Sticky: Menempel Tepat di Bawah Navbar saat Scroll) */
+.sticky-filter-wrapper {
+  position: sticky;
+  top: 72px;
+  z-index: 90;
+  background: rgba(249, 247, 243, 0.88);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  padding: 1.25rem 0 1rem;
+  border-bottom: 1px solid transparent;
+  transition: padding 0.25s ease, background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+[data-theme="dark"] .sticky-filter-wrapper {
+  background: rgba(21, 20, 18, 0.90);
+}
+
+/* Saat di-scroll (is-stuck): lebih ramping dan berbayang halus */
+.sticky-filter-wrapper.is-stuck {
+  padding: 0.75rem 0 0.7rem;
+  border-bottom-color: var(--border-color);
+  background: rgba(249, 247, 243, 0.96);
+  box-shadow: 0 10px 30px rgba(93, 78, 55, 0.08);
+}
+
+[data-theme="dark"] .sticky-filter-wrapper.is-stuck {
+  background: rgba(21, 20, 18, 0.96);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45);
+}
+
 /* Search Bar Panjang di Atas */
 .search-section {
   max-width: 760px;
-  margin: 0 auto 3rem;
+  margin: 0 auto;
   position: relative;
   width: 100%;
 }
@@ -698,7 +728,33 @@ body {
 /* Responsive */
 @media (max-width: 768px) {
   .catalog-hero {
-    padding: 3rem 0 2rem;
+    padding: 2.75rem 0 1.25rem;
+  }
+  .sticky-filter-wrapper {
+    top: 64px;
+    padding: 0.85rem 0 0.75rem;
+  }
+  .sticky-filter-wrapper.is-stuck {
+    padding: 0.6rem 0 0.55rem;
+  }
+  .tag-filters {
+    gap: 0.45rem;
+    margin-top: 0.75rem;
+  }
+  .sticky-filter-wrapper.is-stuck .tag-filters {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    justify-content: flex-start;
+    padding-bottom: 4px;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+  .sticky-filter-wrapper.is-stuck .tag-filters::-webkit-scrollbar {
+    display: none;
+  }
+  .sticky-filter-wrapper.is-stuck .tag-pill {
+    flex-shrink: 0;
+    white-space: nowrap;
   }
   .inti-grid {
     grid-template-columns: 1fr;
