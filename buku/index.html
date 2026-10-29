@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Title & Meta -->
+  <title>Buku INTISATU — Risalah & Catatan Perenungan Realitas</title>
+  <meta name="description" content="Buku lengkap INTISATU (Naskah 0000 s/d 0091) oleh Abdul Rohman Masrifan (Mabot). Format B5 standar penerbitan fisik, 721 halaman, bebas emoticon. Baca langsung di web atau unduh file PDF.">
+  <link rel="canonical" href="https://intisatu.com/buku/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Buku INTISATU — Risalah & Catatan Perenungan Realitas">
+  <meta property="og:description" content="Koleksi lengkap Naskah 0000 s/d 0091 dalam format buku monograf B5 (721 halaman). Baca langsung atau unduh gratis.">
+  <meta property="og:url" content="https://intisatu.com/buku/">
+  <meta property="og:type" content="book">
+  <meta property="og:site_name" content="INTISATU">
+  <meta property="og:image" content="https://intisatu.com/assets/inti-logo-node-network.png">
+  <meta property="og:locale" content="id_ID">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Buku INTISATU — Risalah & Catatan Perenungan Realitas">
+  <meta name="twitter:description" content="Koleksi lengkap Naskah 0000 s/d 0091 dalam format buku monograf B5 (721 halaman). Baca langsung atau unduh gratis.">
+  <meta name="twitter:image" content="https://intisatu.com/assets/inti-logo-node-network.png">
+
+  <!-- Robots & Author -->
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Abdul Rohman Masrifan (Mabot)">
+
+  <!-- Structured Data / JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Book",
+    "name": "INTISATU — Risalah & Catatan Perenungan Realitas",
+    "alternateName": "Buku INTISATU",
+    "author": {
+      "@type": "Person",
+      "name": "Abdul Rohman Masrifan",
+      "alternateName": "Mabot"
+    },
+    "description": "Risalah pemikiran, dialog batin, dan rekaman perenungan realitas dari naskah 0000 hingga 0091. Membaca dan menulis realitas dengan akal dan rasa.",
+    "inLanguage": "id",
+    "numberOfPages": 721,
+    "bookFormat": "https://schema.org/EBook",
+    "datePublished": "2026-10-29",
+    "url": "https://intisatu.com/buku/",
+    "publisher": {
+      "@type": "Organization",
+      "name": "INTISATU",
+      "url": "https://intisatu.com"
+    }
+  }
+  </script>
+
+  <!-- Favicon & Icons -->
+  <link rel="icon" type="image/svg+xml" href="../assets/inti-logo-node-network.svg">
+  <link rel="alternate icon" type="image/png" href="../assets/inti-logo-node-network.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/inti-logo-node-network.png">
+
+  <!-- Fonts & Stylesheets -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Cinzel:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/catalog.css">
+
+  <style>
+    /* Styling khusus Halaman Buku */
+    .book-hero {
+      padding: 40px 0 30px;
+    }
+    .book-grid {
+      display: grid;
+      grid-template-columns: 340px 1fr;
+      gap: 40px;
+      align-items: center;
+      background: var(--bg-card, rgba(255, 255, 255, 0.03));
+      border: 1px solid var(--border-color, rgba(212, 175, 55, 0.2));
+      border-radius: 16px;
+      padding: 36px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+    @media (max-width: 860px) {
+      .book-grid {
+        grid-template-columns: 1fr;
+        padding: 24px;
+        gap: 30px;
+      }
+    }
+
+    /* 3D Mockup Cover */
+    .book-cover-mockup {
+      width: 100%;
+      max-width: 320px;
+      margin: 0 auto;
+      aspect-ratio: 176 / 250;
+      background-color: #141210;
+      color: #F4EEDD;
+      border-radius: 6px 12px 12px 6px;
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      box-shadow: 
+        -6px 0 12px rgba(0,0,0,0.4),
+        15px 15px 35px rgba(0,0,0,0.5),
+        inset 4px 0 8px rgba(255,255,255,0.05);
+      position: relative;
+      padding: 24px 20px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      text-align: center;
+      box-sizing: border-box;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .book-cover-mockup:hover {
+      transform: translateY(-4px) rotate(-0.5deg);
+      box-shadow: 
+        -8px 0 16px rgba(0,0,0,0.5),
+        20px 20px 45px rgba(0,0,0,0.6);
+    }
+    .mockup-outer-border {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      right: 10px;
+      bottom: 10px;
+      border: 1px solid rgba(212, 175, 55, 0.5);
+      pointer-events: none;
+    }
+    .mockup-inner-border {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      border: 0.5px solid rgba(212, 175, 55, 0.25);
+      pointer-events: none;
+    }
+    .mockup-logo {
+      width: 68px;
+      height: 68px;
+      object-fit: contain;
+      margin-top: 10px;
+      margin-bottom: 8px;
+    }
+    .mockup-title {
+      font-family: 'Cinzel', Georgia, serif;
+      font-size: 24px;
+      letter-spacing: 4px;
+      color: #EBD59B;
+      margin: 4px 0;
+      line-height: 1.1;
+    }
+    .mockup-subtitle {
+      font-family: Georgia, serif;
+      font-style: italic;
+      font-size: 11px;
+      color: #D6CFBE;
+      line-height: 1.4;
+      margin: 6px auto;
+      max-width: 200px;
+    }
+    .mockup-author {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: #FFF;
+      text-transform: uppercase;
+      margin-top: 8px;
+    }
+    .mockup-edition {
+      font-size: 9px;
+      letter-spacing: 1.5px;
+      color: #D4AF37;
+      text-transform: uppercase;
+    }
+
+    /* Info Column */
+    .book-details h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(24px, 4vw, 36px);
+      line-height: 1.2;
+      margin: 0 0 10px 0;
+      color: var(--text-heading, #fff);
+    }
+    .book-tagline {
+      font-family: Georgia, serif;
+      font-style: italic;
+      font-size: 16px;
+      color: var(--gold-accent, #d4af37);
+      margin-bottom: 18px;
+    }
+    .book-meta-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    .book-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 500;
+      background: var(--bg-pill, rgba(212, 175, 55, 0.1));
+      color: var(--text-pill, #e0d5ba);
+      border: 1px solid var(--border-pill, rgba(212, 175, 55, 0.25));
+    }
+    .book-desc {
+      font-size: 14.5px;
+      line-height: 1.7;
+      color: var(--text-body, #bbb);
+      margin-bottom: 24px;
+    }
+
+    /* Actions */
+    .book-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .btn-primary-gold {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 22px;
+      background: linear-gradient(135deg, #d4af37, #b89728);
+      color: #141210;
+      font-weight: 600;
+      font-size: 14px;
+      border-radius: 8px;
+      text-decoration: none;
+      box-shadow: 0 4px 14px rgba(212, 175, 55, 0.35);
+      transition: all 0.2s ease;
+    }
+    .btn-primary-gold:hover {
+      background: linear-gradient(135deg, #e5bf42, #c7a42e);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(212, 175, 55, 0.45);
+      color: #000;
+    }
+    .btn-secondary-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 20px;
+      background: transparent;
+      color: var(--text-heading, #fff);
+      border: 1px solid var(--border-color, rgba(255, 255, 255, 0.2));
+      font-weight: 500;
+      font-size: 14px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    .btn-secondary-outline:hover {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: rgba(212, 175, 55, 0.5);
+      color: var(--gold-accent, #d4af37);
+      transform: translateY(-2px);
+    }
+
+    /* Roadmap Sections */
+    .roadmap-section {
+      margin: 40px 0;
+      padding: 30px;
+      background: var(--bg-card, rgba(255, 255, 255, 0.02));
+      border: 1px solid var(--border-color, rgba(255, 255, 255, 0.08));
+      border-radius: 12px;
+    }
+    .roadmap-title {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 22px;
+      margin-bottom: 20px;
+      color: var(--text-heading, #fff);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+      padding-bottom: 10px;
+    }
+    .roadmap-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+    }
+    .roadmap-card {
+      padding: 16px;
+      border-radius: 8px;
+      background: rgba(0, 0, 0, 0.15);
+      border-left: 3px solid #d4af37;
+    }
+    .roadmap-card h3 {
+      font-size: 15px;
+      margin: 0 0 8px 0;
+      color: var(--gold-accent, #d4af37);
+    }
+    .roadmap-card p {
+      font-size: 13px;
+      line-height: 1.55;
+      color: var(--text-body, #aaa);
+      margin: 0;
+    }
+
+    /* Embedded PDF Viewer */
+    .reader-section {
+      margin: 40px 0 60px 0;
+    }
+    .reader-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .reader-header h2 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: 24px;
+      margin: 0;
+      color: var(--text-heading, #fff);
+    }
+    .reader-wrapper {
+      position: relative;
+      width: 100%;
+      height: 850px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border-color, rgba(212, 175, 55, 0.3));
+      background: #141210;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    }
+    .reader-iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .reader-fallback {
+      text-align: center;
+      padding: 20px;
+      font-size: 13px;
+      color: #888;
+    }
+
+    /* Top Nav additions */
+    .nav-links-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .nav-link-item {
+      color: var(--text-muted, #999);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    .nav-link-item:hover, .nav-link-item.active {
+      color: var(--gold-accent, #d4af37);
+    }
+  </style>
+</head>
+<body>
+  <!-- Ambient background aura -->
+  <div class="bg-aura"></div>
+
+  <!-- Top Navigation -->
+  <nav class="top-nav">
+    <div class="container nav-inner">
+      <div class="nav-brand">
+        <a href="https://intisatu.com/" class="nav-back-link" aria-label="Kembali ke Beranda Utama">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="19" y1="12" x2="5" y2="12"></line>
+            <polyline points="12 19 5 12 12 5"></polyline>
+          </svg>
+          <span>Beranda</span>
+        </a>
+        <a href="https://intisatu.com/" class="nav-brand-title">INTISATU</a>
+      </div>
+
+      <div class="nav-links-right">
+        <a href="https://intisatu.com/baca/" class="nav-link-item">Direktori Tulisan</a>
+        <a href="https://intisatu.com/buku/" class="nav-link-item active">Buku PDF</a>
+
+        <button class="theme-toggle" id="themeToggle" aria-label="Ganti Tema">
+          <svg class="sun-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="moon-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="container">
+    
+    <!-- Hero Showcase Section -->
+    <section class="book-hero">
+      <div class="book-grid">
+        
+        <!-- Left: 3D Visual Book Mockup -->
+        <div class="book-cover-mockup">
+          <div class="mockup-outer-border"></div>
+          <div class="mockup-inner-border"></div>
+
+          <div>
+            <div class="mockup-edition">Koleksi Lengkap 0000 – 0091</div>
+          </div>
+
+          <div>
+            <img src="../assets/inti-logo-node-network.png" alt="Logo INTISATU" class="mockup-logo">
+            <div class="mockup-title">INTISATU</div>
+            <div class="mockup-subtitle">Membaca dan Menulis Realitas dengan Akal dan Rasa</div>
+          </div>
+
+          <div>
+            <div class="mockup-author">Abdul Rohman Masrifan (Mabot)</div>
+            <div style="font-size: 8px; color: #888; margin-top: 3px;">Format B5 • 2026</div>
+          </div>
+        </div>
+
+        <!-- Right: Details & Action -->
+        <div class="book-details">
+          <span class="hero-eyebrow" style="margin-bottom: 8px; display: inline-block;">Edisi Lengkap Monograf</span>
+          <h1>INTISATU — Risalah & Catatan Perenungan Realitas</h1>
+          <p class="book-tagline">"Membaca dan Menulis Realitas dengan Akal dan Rasa"</p>
+
+          <div class="book-meta-pills">
+            <span class="book-pill">📖 721 Halaman</span>
+            <span class="book-pill">📐 Format Standar B5</span>
+            <span class="book-pill">🖋️ 92 Naskah (0000–0091)</span>
+            <span class="book-pill">🌿 Bebas Emoticon</span>
+            <span class="book-pill">⚖️ Lisensi Kehidupan</span>
+            <span class="book-pill">💾 PDF ~2.0 MB</span>
+          </div>
+
+          <p class="book-desc">
+            Buku ini menghimpun seluruh rekaman dialog batin, eksplorasi sains, dan perenungan realitas INTISATU dari simpul pertama (0000) hingga bab terbaru 0091 (<em>Sabar: Seni Menahan Tergesa sampai penyelesaian seluruh proses</em>). Diformat khusus dengan standar tipografi monograf klasik, formula matematika jernih, dan tata letak B5 yang siap dicetak fisik maupun dinikmati secara digital.
+          </p>
+
+          <div class="book-actions">
+            <a href="../buku/intisatu-buku-lengkap.pdf" download="INTISATU_Buku_Lengkap.pdf" class="btn-primary-gold">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              <span>Unduh Buku PDF (2.0 MB)</span>
+            </a>
+
+            <a href="#reader" class="btn-secondary-outline">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+              </svg>
+              <span>Baca Langsung di Browser</span>
+            </a>
+
+            <a href="https://intisatu.com/baca/" class="btn-secondary-outline">
+              <span>Jelajahi Direktori Web &rarr;</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Peta Tiga Rumpun Perjalanan Naskah -->
+    <section class="roadmap-section">
+      <h2 class="roadmap-title">Peta Tiga Rumpun Perjalanan INTISATU</h2>
+      <div class="roadmap-grid">
+        <div class="roadmap-card">
+          <h3>1. Kosmologi & Pondasi Struktur</h3>
+          <p>
+            Membangun jembatan antara sains kuantum, matematika, dan kosmologi tauhid. Dari Hukum Kesadaran Resonansi (0001), Listrik Ilahiah (0003), Node Semesta (0010), hingga bahasa Onemath (0060).
+          </p>
+        </div>
+
+        <div class="roadmap-card">
+          <h3>2. Dialektika Akal & Rasa</h3>
+          <p>
+            Perjumpaan antara logika dingin dan kelembutan nurani manusiawi. Menelusuri Madrasah Kesadaran (0030), Bocil Abadi (0052), Aljabar Jiwa (0048), hingga pertanyaan getir tentang kelelahan hidup (0063).
+          </p>
+        </div>
+
+        <div class="roadmap-card">
+          <h3>3. Realitas Nyata & Ketahanan Jiwa</h3>
+          <p>
+            Membumi ke tanah nyata tanpa drama. Menghayati kearifan lokal Titen (0068–0071), realitas sebagai validator tertinggi (0074), ketetapan diri sebagai invariant (0090), dan seni menahan tergesa dalam sabar (0091).
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Embedded Interactive PDF Reader -->
+    <section class="reader-section" id="reader">
+      <div class="reader-header">
+        <h2>Penampil Buku Lengkap</h2>
+        <a href="../buku/intisatu-buku-lengkap.pdf" target="_blank" rel="noopener" class="btn-secondary-outline" style="font-size: 13px; padding: 8px 14px;">
+          Buka Tab Baru ↗
+        </a>
+      </div>
+
+      <div class="reader-wrapper">
+        <iframe 
+          src="../buku/intisatu-buku-lengkap.pdf#toolbar=1&navpanes=1" 
+          class="reader-iframe" 
+          title="Buku Lengkap INTISATU PDF"
+          loading="lazy">
+        </iframe>
+      </div>
+      
+      <div class="reader-fallback">
+        Perangkat Anda tidak menampilkan penampil PDF secara otomatis? 
+        <a href="../buku/intisatu-buku-lengkap.pdf" download="INTISATU_Buku_Lengkap.pdf" style="color: #d4af37; text-decoration: underline;">
+          Klik di sini untuk langsung mengunduh file PDF (2.0 MB)
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="catalog-footer">
+    <div class="container footer-content">
+      <p class="footer-copyright">
+        <strong>INTISATU</strong> &copy; 2026 Abdul Rohman Masrifan (Mabot).
+        <br>
+        <span style="font-size: 12px; color: #888;">
+          INTI – Interkoneksi Narasi Teknologi Intelektual. Disusun berdasarkan Lisensi Kehidupan (0000).
+        </span>
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    // Theme toggle (Dark / Light mode)
+    const themeToggle = document.getElementById('themeToggle');
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    
+    function setTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem('theme', theme);
+    }
+    
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      setTheme(savedTheme);
+    } else {
+      setTheme(prefersDark.matches ? 'dark' : 'light');
+    }
+    
+    if (themeToggle) {
+      themeToggle.addEventListener('click', () => {
+        const currentTheme = document.documentElement.getAttribute('data-theme');
+        setTheme(currentTheme === 'dark' ? 'light' : 'dark');
+      });
+    }
+  </script>
+</body>
+</html>
